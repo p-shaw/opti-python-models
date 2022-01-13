@@ -30,7 +30,7 @@ def gwh(n, display_screen=True, display_graphs=True):
     x = [[0 for _ in range(n)] for _ in range(n)]
     for i in range(n):
         for j in range(i + 1, n):
-            x[i][j] = x[j][i] = mdl.integer_var(0, 1, 'X({}, {})'.format(i, j))
+            x[i][j] = x[j][i] = mdl.binary_var('X({}, {})'.format(i, j))
 
     # Nodes must be connected (degree != 0) and not contractable (degree != 2)
     deg = [mdl.sum(x[i]) for i in range(n)]
